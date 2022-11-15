@@ -1,0 +1,24 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: nginx-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      hostNetwork: false
+      containers:
+      - name: nginx
+        image: ghcr.io/arun090990m2p/nginx:v1
+        ports: []
+        resources:
+          limits: {}
+      imagePullSecrets:
+      - name: ghcr.io-secret
+      
